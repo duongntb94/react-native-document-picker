@@ -117,18 +117,13 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)options
 -(void)documentMenuWasCancelled:(UIDocumentMenuViewController *)documentMenu {
     RCTResponseSenderBlock callback = [composeCallbacks lastObject];
     [composeCallbacks removeLastObject];
-    NSMutableDictionary* result = [NSMutableDictionary dictionary];
-    [result setValue:@"cancelled" forKey:@"error"];
-    callback(result, @[[NSNull null]]);
-    
+    callback(@[@"error" ,[NSNull null]]);
 }
 
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
     RCTResponseSenderBlock callback = [composeCallbacks lastObject];
     [composeCallbacks removeLastObject];
-    NSMutableDictionary* result = [NSMutableDictionary dictionary];
-    [result setValue:@"cancelled" forKey:@"error"];
-    callback(result, @[[NSNull null]]);
+    callback(@[@"error" ,[NSNull null]]);
 }
 
 @end
